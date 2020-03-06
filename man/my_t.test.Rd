@@ -7,20 +7,26 @@
 my_t.test(x, alternative, mu)
 }
 \arguments{
-\item{x}{Numberic input}
+\item{x}{Numberic vector of data.}
 
 \item{alternative}{Character string specifying the alternative hypothesis.
-Only accept \code{two.sided}, \code{less}, or \code{greater}}
+Only accept \code{"two.sided"}, \code{"less"}, or \code{"greater"}.}
 
-\item{mu}{}
+\item{mu}{Numberic input indicating the null hypothesis value of the mean.}
 }
 \value{
-
+List with elements:
+\describe{
+\item{test_stat}{the numeric test statistic}
+\item{df}{the degrees of freedom}
+\item{alternative}{the value of the parameter alternative}
+\item{p_val}{the numeric p-value}
+}
 }
 \description{
 This function performs a one sample t-test
 }
 \examples{
-
+my_t.test(x, "two.sided", 12)
 
 }

@@ -8,10 +8,12 @@
 #'@param mu Numberic input indicating the null hypothesis value of the mean.
 #'
 #'@return List with elements:
-#'  \code{test_stat}: the numeric test statistic.
-#'  \code{df}: the degrees of freedom.
-#'  \code{alternative}: the value of the parameter alternative.
-#'  \code{p_val}: the numeric p-value.
+#'\describe{
+#'\item{test_stat}{the numeric test statistic}
+#'\item{df}{the degrees of freedom}
+#'\item{alternative}{the value of the parameter alternative}
+#'\item{p_val}{the numeric p-value}
+#'}
 #'
 #'@examples
 #'my_t.test(x, "two.sided", 12)
