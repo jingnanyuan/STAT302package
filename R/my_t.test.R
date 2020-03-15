@@ -16,7 +16,7 @@
 #'}
 #'
 #'@examples
-#'my_t.test(x, "two.sided", 12)
+#'my_t.test(7, "two.sided", 12)
 #'
 #'@export
 my_t.test <- function(x, alternative, mu) {

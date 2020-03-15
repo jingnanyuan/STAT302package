@@ -27,6 +27,6 @@ List with elements:
 This function performs a one sample t-test
 }
 \examples{
-my_t.test(x, "two.sided", 12)
+my_t.test(7, "two.sided", 12)
 
 }
