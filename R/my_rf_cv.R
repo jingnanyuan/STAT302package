@@ -10,15 +10,17 @@
 #' @examples
 #' my_rf_cv(5)
 #'
+#' @import randomForest
+#'
 #' @export
 my_rf_cv <- function(k) {
-  n <- nrow(iris)
+  n <- nrow(my_iris)
   fold <- sample(rep(1:k, length = n))
   mse <- rep(NA, k)
   #train the model through every fold
   for (i in 1:k) {
-    data_train <- iris[fold != i, ]
-    data_test <- iris[fold == i, ]
+    data_train <- my_iris[fold != i, ]
+    data_test <- my_iris[fold == i, ]
     model <- randomForest(Sepal.Length ~ Sepal.Width + Petal.Length + Petal.Width, data = data_train, ntree = 100)
     pred <- predict(model, data_test[, -1])
     #the average squared difference between

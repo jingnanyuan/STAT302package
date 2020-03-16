@@ -18,7 +18,7 @@ my_knn_cv(train, cl, k_nn, k_cv)
 \value{
 List with objects:
 \describe{
-\item{class}{a vector of the predicted class $\hat{Y}_{i}$ for all observations}
+\item{class}{a vector of the predicted class Y hat for all observations}
 \item{df}{a numeric with the cross-validation misclassification error}
 }
 }
@@ -27,6 +27,6 @@ This function predicts output from existing variables
   by using k-nearest neighbors cross-validation
 }
 \examples{
-my_knn_cv(iris[, -5],iris$Species, 5, 5)
+my_knn_cv(my_iris[, -5],my_iris$Species, 5, 5)
 
 }

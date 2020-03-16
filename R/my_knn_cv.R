@@ -10,12 +10,14 @@
 #'
 #' @return List with objects:
 #' \describe{
-#' \item{class}{a vector of the predicted class $\hat{Y}_{i}$ for all observations}
+#' \item{class}{a vector of the predicted class Y hat for all observations}
 #' \item{df}{a numeric with the cross-validation misclassification error}
 #' }
 #'
 #' @examples
-#' my_knn_cv(iris[, -5],iris$Species, 5, 5)
+#' my_knn_cv(my_iris[, -5],my_iris$Species, 5, 5)
+#'
+#' @import class
 #'
 #' @export
 my_knn_cv <- function(train, cl, k_nn, k_cv) {
@@ -24,12 +26,12 @@ my_knn_cv <- function(train, cl, k_nn, k_cv) {
   mcr <- rep(NA, k_cv)
   #train the model through every fold
   for (i in 1:k_cv) {
-    data_train <- train[fold != i, ] #X_i
-    data_test <- train[fold == i, ] #X_i^*
-    cl_train <- cl[fold != i] #Y_i
-    cl_test <- cl[fold == i] #Y_i^*
+    data_train <- train[fold != i, ]
+    data_test <- train[fold == i, ]
+    cl_train <- cl[fold != i]
+    cl_test <- cl[fold == i]
     knn_output <- knn(train = data_train, cl = cl_train,
-                      test = data_test, k = k_nn) #Y_i^*_hat
+                      test = data_test, k = k_nn)
     #the misclassification rate
     mcr[i] <- sum(knn_output != cl_test)/length(cl_test)
   }

@@ -13,6 +13,8 @@
 #'@examples
 #'my_lm(mpg ~ hp + wt, mtcars)
 #'
+#'@import stats
+#'
 #'@export
 my_lm <- function(formula, data) {
   #set the variables
