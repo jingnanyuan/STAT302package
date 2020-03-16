@@ -6,7 +6,7 @@ Authors@R:
            family = "Yuan",
            role = c("aut", "cre"),
            email = "jingny@uw.edu")
-Description: This package demonstrates how to build a package for STAT301 at UW.
+Description: This package demonstrates how to build a package for STAT302 at UW.
 Depends: R (>= 3.2)
 License: GPL-3
 Encoding: UTF-8
@@ -18,3 +18,7 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+Imports: magrittr,
+  class,
+  randomForest,
+  stats
