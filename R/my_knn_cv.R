@@ -1,22 +1,23 @@
-#'k-Nearest Neighbors Cross-Validation
+#' k-Nearest Neighbors Cross-Validation
 #'
-#'This function predicts output from existing data by using k-nearest neighbors cross-validation
+#' This function predicts output from existing variables
+#'   by using k-nearest neighbors cross-validation
 #'
-#'@param train The input data frame.
-#'@param cl The true class value of training data.
-#'@param k_nn The integer representing the number of neighbors.
-#'@param k_cv The integer representing the number of folds.
+#' @param train The input data frame.
+#' @param cl The true class value of training data.
+#' @param k_nn The integer representing the number of neighbors.
+#' @param k_cv The integer representing the number of folds.
 #'
-#'@return List with objects:
-#'\describe{
-#'\item{class}{a vector of the predicted class $\hat{Y}_{i}$ for all observations}
-#'\item{df}{a numeric with the cross-validation misclassification error}
-#'}
+#' @return List with objects:
+#' \describe{
+#' \item{class}{a vector of the predicted class $\hat{Y}_{i}$ for all observations}
+#' \item{df}{a numeric with the cross-validation misclassification error}
+#' }
 #'
-#'@examples
-#'my_knn_cv(iris[, -5],iris$Species, 5, 5)
+#' @examples
+#' my_knn_cv(iris[, -5],iris$Species, 5, 5)
 #'
-#'@export
+#' @export
 my_knn_cv <- function(train, cl, k_nn, k_cv) {
   n <- nrow(train)
   fold <- sample(rep(1:k_cv, length = n))
