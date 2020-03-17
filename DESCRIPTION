@@ -16,10 +16,15 @@ Suggests:
     testthat (>= 2.1.0),
     covr,
     knitr,
-    rmarkdown
+    rmarkdown,
+    kableExtra,
+    datasets
 VignetteBuilder: knitr
-Imports: magrittr,
-  class,
-  randomForest,
-  stats,
-  ggplot2
+Imports: 
+    dplyr,
+    magrittr,
+    class,
+    randomForest,
+    stats,
+    ggplot2,
+    tidyverse
