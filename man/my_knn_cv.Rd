@@ -27,6 +27,6 @@ This function predicts output from existing variables
   by using k-nearest neighbors cross-validation
 }
 \examples{
-my_knn_cv(my_iris[, -5],my_iris$Species, 5, 5)
+my_knn_cv(my_iris[, -5], my_iris$Species, 5, 5)
 
 }
