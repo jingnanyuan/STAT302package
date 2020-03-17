@@ -16,10 +16,10 @@
 #'}
 #'
 #'@examples
-#'my_t.test(7, "two.sided", 12)
+#'my_t_test(7, "two.sided", 12)
 #'
 #'@export
-my_t.test <- function(x, alternative, mu) {
+my_t_test <- function(x, alternative, mu) {
   mu_hat <- mean(x)
   se <- sd(x)/sqrt(length(x))
   test_stat <- (mu_hat - mu)/se
