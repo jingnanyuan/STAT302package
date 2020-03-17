@@ -14,7 +14,7 @@ A numeric with the cross-validation error.
 }
 \description{
 This function predicts output from existing variables by using
- random forest cross-validation
+  random forest cross-validation
 }
 \examples{
 my_rf_cv(5)

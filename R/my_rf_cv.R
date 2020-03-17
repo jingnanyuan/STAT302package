@@ -1,7 +1,7 @@
 #' Random Forest Cross-Validation
 #'
 #' This function predicts output from existing variables by using
-#'  random forest cross-validation
+#'   random forest cross-validation
 #'
 #' @param k The number of folds.
 #'
@@ -21,8 +21,8 @@ my_rf_cv <- function(k) {
   for (i in 1:k) {
     data_train <- my_gapminder[fold != i, ]
     data_test <- my_gapminder[fold == i, ]
-    model <- randomForest(lifeExp ~ gdpPercap , data = data_train, ntree = 100)
-    pred <- predict(model, data_test[, 6])
+    model <- randomForest(lifeExp ~ gdpPercap, data = data_train, ntree = 100)
+    pred <- predict(model, data_test[, -4])
     mse[i] <- mean((pred - data_test$lifeExp)^2)
   }
   output <- mean(mse)
