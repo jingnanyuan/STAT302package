@@ -15,6 +15,90 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
+Install \texttt{STAT302package} using:
+```{r, eval = FALSE}
+devtools::install_github("jingnanyuan/STAT302package")
+```
+
+
+```{r setup, massage = FALSE}
 library(STAT302package)
+library(ggplot2)
+```
+
+```{r}
+my_t.test(my_gapminder$lifeExp, "two.sided", 60) #p = 0.09322877
+my_t.test(my_gapminder$lifeExp, "less", 60) #p = 0.04661438
+my_t.test(my_gapminder$lifeExp, "greater", 60) #p = 0.9533856
+```
+Fail to reject the hypothesis that the mean of life expectancy at birth does not equal to 60.
+
+Reject the hypothesis that the mean of life expectancy at birth is equal to 60.
+
+Fail to reject the hypothesis that the mean of life expectancy at birth does not greater to 60.
+
+```{r}
+test <- my_lm(lifeExp ~ gdpPercap + continent, my_gapminder)
+test
+my_coef <- test[, 1]
+my_matrix <- model.matrix(lifeExp ~ gdpPercap + continent, my_gapminder)
+y_hat <- my_matrix %*% as.matrix(my_coef)
+my_data <- data.frame("Actual" = my_gapminder$lifeExp,
+                      "Fitted" = y_hat,
+                      "Continent" = my_gapminder$continent)
+ggplot(my_data, aes(x = Actual, y = Fitted, color = Continent)) +
+  geom_point() + theme_bw(base_size = 20) +
+  geom_abline(slope = 1, intercept = 0) +
+  
+```
+
+The gdpPercap coefficient is 4.45e-04, which shows a weak positive relationship. 
+
+Null hypothiesis: There is no relationship between GDP per capita and life expectancy.
+
+Althernative Hypothesis: There is a significant relationship between GDP per capita and life expectancy.
+
+The p-value of the gdpPercap hypothesis test is 8.552893e-73, which is smaller than 0.05, 
+  meaning that we reject the hypothesis that there is no relationship between GDP per capita and life expectancy. 
+  It is likely to say that there is a relationship between GDP per capita and life expectancy.
+
+From the plot, we can see there is a positive correlation between Actual and FItted, but it is not perfectly linear, meaning that the model is partially fit.
+
+```{r}
+cv_err <- rep(NA, 5)
+train_err <- rep(NA, 5)
+for (i in 1:10) {
+  my_knn <- my_knn_cv(cbind(my_gapminder$gdpPercap, my_gapminder$lifeExp), my_gapminder$continent, i, 5)
+    cv_err[i] <- my_knn[[2]]
+    train_err[i] <- sum(my_knn$class != my_gapminder$continent)/length(my_gapminder$continent)
+}
+cbind(cv_err, train_err)
+```
+
+I would choose the 10 nearest neighbors model based on the training misclassification rates, and teh 1 nearest neighbors model based on the CV misclassification rates. Above all, I would choose 10 nearest neighbors model since it has the smallest cv error. 
+
+```{r}
+mean_error <- rep(NA, 3)
+sd_error <- rep(NA, 3)
+mse <- matrix(nrow = 3, ncol = 30)
+k = c(2, 5, 10)
+for (i in 1:3) {
+  for (j in 1:30) {
+    mse[i,j] <- my_rf_cv(k[i])
+  }
+  mean_error[i] <- mean(mse[i,])
+  sd_error[i] <- sd(mse[i,])
+}
+my_data <- data.frame("k_Value" = rep(k, 30),
+                      "CV_estimated_MSE" = c(mse[1,], mse[2,], mse[3,]))
+names(my_data)[2] = "CV_estimated_MSE"
+ggplot(my_data, aes(x = k_Value, y = CV_estimated_MSE, group = k_Value)) +
+  geom_boxplot() + theme_bw(base_size = 20) +
+  labs(x = "k value", y = "CV estimated MSE",
+       title = "The CV Estimated MSE by Using Different k Value") 
+cbind(mean_error, sd_error)
+
+```
+```{r}
+
 ```
