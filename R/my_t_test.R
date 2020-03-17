@@ -18,6 +18,8 @@
 #'@examples
 #'my_t_test(7, "two.sided", 12)
 #'
+#'@import stats
+#'
 #'@export
 my_t_test <- function(x, alternative, mu) {
   mu_hat <- mean(x)
