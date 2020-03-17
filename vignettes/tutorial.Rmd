@@ -27,9 +27,9 @@ library(ggplot2)
 ```
 
 ```{r}
-my_t.test(my_gapminder$lifeExp, "two.sided", 60) #p = 0.09322877
-my_t.test(my_gapminder$lifeExp, "less", 60) #p = 0.04661438
-my_t.test(my_gapminder$lifeExp, "greater", 60) #p = 0.9533856
+my_t_test(my_gapminder$lifeExp, "two.sided", 60) #p = 0.09322877
+my_t_test(my_gapminder$lifeExp, "less", 60) #p = 0.04661438
+my_t_test(my_gapminder$lifeExp, "greater", 60) #p = 0.9533856
 ```
 Fail to reject the hypothesis that the mean of life expectancy at birth does not equal to 60.
 
@@ -48,8 +48,7 @@ my_data <- data.frame("Actual" = my_gapminder$lifeExp,
                       "Continent" = my_gapminder$continent)
 ggplot(my_data, aes(x = Actual, y = Fitted, color = Continent)) +
   geom_point() + theme_bw(base_size = 20) +
-  geom_abline(slope = 1, intercept = 0) +
-  
+  geom_abline(slope = 1, intercept = 0)
 ```
 
 The gdpPercap coefficient is 4.45e-04, which shows a weak positive relationship. 
@@ -99,6 +98,4 @@ ggplot(my_data, aes(x = k_Value, y = CV_estimated_MSE, group = k_Value)) +
 cbind(mean_error, sd_error)
 
 ```
-```{r}
 
-```
