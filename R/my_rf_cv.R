@@ -4,6 +4,7 @@
 #'   random forest cross-validation
 #'
 #' @param k The number of folds.
+#' @keywords prediction
 #'
 #' @return A numeric with the cross-validation error.
 #'

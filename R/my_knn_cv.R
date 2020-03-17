@@ -7,6 +7,7 @@
 #' @param cl The true class value of training data.
 #' @param k_nn The integer representing the number of neighbors.
 #' @param k_cv The integer representing the number of folds.
+#' @keywords prediction
 #'
 #' @return List with objects:
 #' \describe{

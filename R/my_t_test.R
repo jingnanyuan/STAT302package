@@ -1,26 +1,27 @@
-#'T-test function
+#' T-test function
 #'
-#'This function performs a one sample t-test
+#' This function performs a one sample t-test
 #'
-#'@param x Numberic vector of data.
-#'@param alternative Character string specifying the alternative hypothesis.
-#'  Only accept \code{"two.sided"}, \code{"less"}, or \code{"greater"}.
-#'@param mu Numberic input indicating the null hypothesis value of the mean.
+#' @param x Numberic vector of data.
+#' @param alternative Character string specifying the alternative hypothesis.
+#'   Only accept \code{"two.sided"}, \code{"less"}, or \code{"greater"}.
+#' @param mu Numberic input indicating the null hypothesis value of the mean.
+#' @keywords inference
 #'
-#'@return List with elements:
-#'\describe{
-#'\item{test_stat}{the numeric test statistic}
-#'\item{df}{the degrees of freedom}
-#'\item{alternative}{the value of the parameter alternative}
-#'\item{p_val}{the numeric p-value}
-#'}
+#' @return List with elements:
+#' \describe{
+#' \item{test_stat}{the numeric test statistic}
+#' \item{df}{the degrees of freedom}
+#' \item{alternative}{the value of the parameter alternative}
+#' \item{p_val}{the numeric p-value}
+#' }
 #'
-#'@examples
-#'my_t_test(7, "two.sided", 12)
+#' @examples
+#' my_t_test(7, "two.sided", 12)
 #'
-#'@import stats
+#' @import stats
 #'
-#'@export
+#' @export
 my_t_test <- function(x, alternative, mu) {
   mu_hat <- mean(x)
   se <- sd(x)/sqrt(length(x))

@@ -1,21 +1,22 @@
-#'Linear model
+#' Linear model
 #'
-#'This function fits a linear model in statistic
+#' This function fits a linear model in statistic
 #'
-#'@param formula An object of class \code{formula},
-#'  a symbolic description of the model to be fitted.
-#'@param data A input data frame containing the variables in the model.
+#' @param formula An object of class \code{formula},
+#'   a symbolic description of the model to be fitted.
+#' @param data A input data frame containing the variables in the model.
+#' @keywords inference
 #'
-#'@return a table with rows for each coefficient (including the \code{(Intercept)})
-#'  and columns for the \code{Estimate}, \code{Std. Error}, \code{t value},
-#'  and \code{Pr(>|t|)}.
+#' @return a table with rows for each coefficient (including the \code{(Intercept)})
+#'   and columns for the \code{Estimate}, \code{Std. Error}, \code{t value},
+#'   and \code{Pr(>|t|)}.
 #'
-#'@examples
-#'my_lm(mpg ~ hp + wt, mtcars)
+#' @examples
+#' my_lm(mpg ~ hp + wt, mtcars)
 #'
-#'@import stats
+#' @import stats
 #'
-#'@export
+#' @export
 my_lm <- function(formula, data) {
   #set the variables
   x <- model.matrix(formula, data = data)
