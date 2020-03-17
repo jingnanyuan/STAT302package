@@ -24,6 +24,7 @@ devtools::install_github("jingnanyuan/STAT302package")
 ```{r setup, massage = FALSE}
 library(STAT302package)
 library(ggplot2)
+library(randomForest)
 ```
 
 ```{r}
@@ -71,7 +72,9 @@ for (i in 1:10) {
     cv_err[i] <- my_knn[[2]]
     train_err[i] <- sum(my_knn$class != my_gapminder$continent)/length(my_gapminder$continent)
 }
-cbind(cv_err, train_err)
+data.frame("knn" = c(1:10),
+           "CV Err" = cv_err,
+           "Training Error" = train_err)
 ```
 
 I would choose the 10 nearest neighbors model based on the training misclassification rates, and teh 1 nearest neighbors model based on the CV misclassification rates. Above all, I would choose 10 nearest neighbors model since it has the smallest cv error. 
@@ -95,7 +98,9 @@ ggplot(my_data, aes(x = k_Value, y = CV_estimated_MSE, group = k_Value)) +
   geom_boxplot() + theme_bw(base_size = 20) +
   labs(x = "k value", y = "CV estimated MSE",
        title = "The CV Estimated MSE by Using Different k Value") 
-cbind(mean_error, sd_error)
-
+data.frame("k Value" = k,
+           "Mean Error" = mean_error,
+           "SD Error" = sd_error)
 ```
 
+From the plot, we can learn that the MSE is about the same for different k value but still show a trend of increase. From the table, we can learn that as k value increase (but still small), the means of error increase and the standard deviations of error decrease.
