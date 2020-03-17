@@ -15,7 +15,7 @@
 #' }
 #'
 #' @examples
-#' my_knn_cv(my_iris[, -5],my_iris$Species, 5, 5)
+#' my_knn_cv(my_iris[, -5], my_iris$Species, 5, 5)
 #'
 #' @import class
 #'
@@ -40,3 +40,4 @@ my_knn_cv <- function(train, cl, k_nn, k_cv) {
   output <- list("class" = class, "cv_err" = cv_err)
   return(output)
 }
+
