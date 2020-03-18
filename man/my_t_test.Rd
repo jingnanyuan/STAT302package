@@ -30,3 +30,4 @@ This function performs a one sample t-test
 my_t_test(7, "two.sided", 12)
 
 }
+\keyword{inference}

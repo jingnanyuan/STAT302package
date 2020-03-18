@@ -30,3 +30,4 @@ This function predicts output from existing variables
 my_knn_cv(my_iris[, -5], my_iris$Species, 5, 5)
 
 }
+\keyword{prediction}

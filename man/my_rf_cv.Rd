@@ -20,3 +20,4 @@ This function predicts output from existing variables by using
 my_rf_cv(5)
 
 }
+\keyword{prediction}
