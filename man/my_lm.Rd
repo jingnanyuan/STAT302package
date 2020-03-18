@@ -14,8 +14,8 @@ a symbolic description of the model to be fitted.}
 }
 \value{
 a table with rows for each coefficient (including the \code{(Intercept)})
- and columns for the \code{Estimate}, \code{Std. Error}, \code{t value},
- and \code{Pr(>|t|)}.
+  and columns for the \code{Estimate}, \code{Std. Error}, \code{t value},
+  and \code{Pr(>|t|)}.
 }
 \description{
 This function fits a linear model in statistic
@@ -24,3 +24,4 @@ This function fits a linear model in statistic
 my_lm(mpg ~ hp + wt, mtcars)
 
 }
+\keyword{inference}
